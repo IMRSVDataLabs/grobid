@@ -1186,7 +1186,7 @@ public class TEIFormatter {
         divResults.add(curDiv);
         Element curParagraph = null;
         Element coord = null;
-        Element paraChunk = null
+        Element paraChunk = null;
         int equationIndex = 0; // current equation index position 
         for (TaggingTokenCluster cluster : clusters) {
             if (cluster == null) {
@@ -1218,8 +1218,8 @@ public class TEIFormatter {
                     addXmlId(head, "_" + divID);
                 }
                 coord = teiElement("coords");
-                coord.appendChild(LayoutTokensUtil.getCoordsString(cluster.concatTokens));
-                head.appendChild(coord)
+                coord.appendChild(LayoutTokensUtil.getCoordsString(cluster.concatTokens()));
+                head.appendChild(coord);
                 curDiv.appendChild(head);
                 divResults.add(curDiv);
             } else if (clusterLabel.equals(TaggingLabels.EQUATION) || 
@@ -1262,8 +1262,8 @@ public class TEIFormatter {
                     addXmlId(note, "_" + divID);
                 }
                 coord = teiElement("coords");
-                coord.appendChild(LayoutTokensUtil.getCoordsString(cluster.concatTokens));
-                note.appendChild(coord)
+                coord.appendChild(LayoutTokensUtil.getCoordsString(cluster.concatTokens()));
+                note.appendChild(coord);
                 curDiv.appendChild(note);
             } else if (clusterLabel.equals(TaggingLabels.PARAGRAPH)) {
                 String clusterContent = LayoutTokensUtil.normalizeDehyphenizeText(cluster.concatTokens());
@@ -1275,11 +1275,11 @@ public class TEIFormatter {
                     }
                     curDiv.appendChild(curParagraph);
                 }
-                paraChunk = teiELement("chunk");
+                paraChunk = teiElement("chunk");
                 paraChunk.appendChild(clusterContent);
                 coord = teiElement("coords");
-                coord.appendChild(LayoutTokensUtil.getCoordsString(cluster.concatTokens));
-                paraChunk.appendChild(coord)
+                coord.appendChild(LayoutTokensUtil.getCoordsString(cluster.concatTokens()));
+                paraChunk.appendChild(coord);
 
                 curParagraph.appendChild(paraChunk);
             } else if (MARKER_LABELS.contains(clusterLabel)) {
